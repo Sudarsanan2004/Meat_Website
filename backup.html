@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KKMuttonStall | Photo Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 32px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 26px;
+            }
+
+            body {
+                padding: 20px;
+            }
+
+            .gallery img {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+
+            .gallery {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 12px;
+            }
+
+            .gallery img {
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Every cut, every process — delivered with care.</h1>
+
+    <div class="gallery">
+        <!-- Add images here -->
+        <img src="images/p1.jpg" alt="Gallery Image 1" />
+        <img src="images/p13.jpg" alt="Gallery Image 2" />
+        <img src="images\IMG_20250330_113904.jpg" alt="Gallery Image 3" />
+        <img src="images/p3.jpg" alt="Gallery Image 4" />
+        <img src="images/p4.jpg" alt="Gallery Image 5" />
+        <img src="images/p30.jpg" alt="Gallery Image 6" />
+         <img src="images/p6.jpg" alt="Gallery Image 1" />
+        <img src="images/p28.jpg" alt="Gallery Image 2" />
+        <img src="images/p25.jpg" alt="Gallery Image 3" />
+        <img src="images/p9.jpg" alt="Gallery Image 4" />
+        <img src="images/p10.jpg" alt="Gallery Image 5" />
+        <img src="images/p11.jpg" alt="Gallery Image 6" />
+        <img src="images\Tamil-Nadu-Goat-Farming1-1024x768.jpg" alt="Gallery Image 6" />
+        <img src="images\goat farm.jpg" alt="Gallery Image 6" />
+        <img src="images/Goat-Farming-.jpg" alt="">
+        <img src="images/farm1.jpg" alt="">
+    </div>
+
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox"
+        style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);align-items:center;justify-content:center;z-index:1000;">
+        <img id="lightbox-img" src=""
+            style="max-width:90%;max-height:90%;border-radius:12px;box-shadow:0 4px 10px rgba(255,255,255,0.3);" />
+    </div>
+
+    <script>
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightbox.style.display = 'flex';
+            });
+        });
+        lightbox.addEventListener('click', () => lightbox.style.display = 'none');
+
+        // Filters
+        const buttons = document.querySelectorAll('.filter-btn');
+        const images = document.querySelectorAll('.gallery img');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+                images.forEach(img => {
+                    const category = img.getAttribute('data-category');
+                    if (filter === 'all' || filter === category) {
+                        img.style.display = 'block';
+                    } else {
+                        img.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Footer Navigation -->
+    <footer
+        style="margin-top:40px;padding:20px 0;text-align:center;background:#222;color:#ddd;border-radius:12px;max-width:1200px;margin-left:auto;margin-right:auto;">
+        <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+            <a href="index.htm" style="color:#ddd;text-decoration:none;font-size:15px;">Home</a>
+            <a href="about-us.html" style="color:#ddd;text-decoration:none;font-size:15px;">About Us</a>
+            <a href="meats.html" style="color:#ddd;text-decoration:none;font-size:15px;">meats</a>
+            <a href="contact-us.html" style="color:#ddd;text-decoration:none;font-size:15px;">Contact</a>
+        </div>
+        <p style="margin-top:10px;font-size:13px;color:#aaa;">2025 All Rights Reserved KK MUTTON STALL</p>
+        <p style="margin-top:5px;font-size:13px;color:#888;">Developed by <strong style="color:white"> <a
+              href="https://makewithus.in/"><span style="color: white;">Makewithus</span></a></strong></p>
+</footer>
+    </footer>
+
+</body>
+
+</html>

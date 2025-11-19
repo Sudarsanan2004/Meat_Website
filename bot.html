@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- ================================
+IMPROVED CHATBOT WITH ACCURATE REPLIES
+Add this to your <body> -->
+<div id="chatbot-container">
+  <div id="chatbot-header">
+    <div class="chatbot-avatar">MW</div>
+    <div class="chatbot-info">
+      <h4>MAKEWITHUS Assistant</h4>
+      <span class="status-online">● Online</span>
+      <div class="team-status">
+        <span class="team-dot"></span>
+        <small>Sudarsanan & Sherhan available</small>
+      </div>
+    </div>
+    <button id="chatbot-close">×</button>
+  </div>
+  
+  <div id="chatbot-messages">
+    <!-- Messages will be loaded here -->
+  </div>
+  
+  <div id="quick-actions">
+    <button class="quick-action-btn" id="book-meeting">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path d="M8 7V3M16 7V3M7 11H17M5 21H19C20.1046 21 21 20.1046 21 19V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7V19C3 20.1046 3.89543 21 5 21Z" stroke="currentColor" stroke-width="2"/>
+      </svg>
+      Book Meeting
+    </button>
+  </div>
+  
+  <div id="chatbot-input-container">
+    <button id="voice-record" class="voice-btn" title="Record Voice Message">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M12 1C10.3431 1 9 2.34315 9 4V12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12V4C15 2.34315 13.6569 1 12 1Z" fill="currentColor"/>
+        <path d="M19 12C19 15.866 15.866 19 12 19M5 12C5 15.866 8.13401 19 12 19M12 19V23M8 23H16" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </button>
+    <input type="text" id="chatbot-input" placeholder="Ask about our services..." maxlength="500">
+    <button id="chatbot-send">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<button id="chatbot-toggle" class="chatbot-float">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <path d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <span class="notification-badge" id="global-notification">1</span>
+</button>
+
+<style>
+/* Chatbot Styles - BOTTOM RIGHT POSITION */
+#chatbot-container {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  width: 380px;
+  height: 600px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  display: none;
+  flex-direction: column;
+  z-index: 10000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  border: 1px solid #e1e5e9;
+  overflow: hidden;
+}
+
+#chatbot-container.active {
+  display: flex;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#chatbot-toggle {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  z-index: 9999;
+  transition: all 0.3s ease;
+}
+
+#chatbot-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+}
+
+/* Rest of your existing CSS styles remain the same */
+#chatbot-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.chatbot-avatar {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
+}
+
+.chatbot-info h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.status-online {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.team-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.team-dot {
+  width: 6px;
+  height: 6px;
+  background: #4ade80;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.team-status small {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+#chatbot-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: auto;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+#chatbot-close:hover {
+  opacity: 1;
+}
+
+#chatbot-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message {
+  display: flex;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.bot-message {
+  align-self: flex-start;
+}
+
+.user-message {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.bot-message .message-avatar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.user-message .message-avatar {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.message-content {
+  max-width: 280px;
+}
+
+.message-content p {
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 18px;
+  line-height: 1.4;
+  font-size: 14px;
+}
+
+.bot-message .message-content p {
+  background: white;
+  color: #333;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-message .message-content p {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.quick-reply {
+  background: rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  color: #667eea;
+  border-radius: 16px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quick-reply:hover {
+  background: rgba(102, 126, 234, 0.2);
+  transform: translateY(-1px);
+}
+
+#quick-actions {
+  padding: 12px 20px;
+  background: white;
+  border-top: 1px solid #e1e5e9;
+  display: flex;
+  gap: 10px;
+}
+
+.quick-action-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quick-action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+#chatbot-input-container {
+  padding: 16px 20px;
+  background: white;
+  border-top: 1px solid #e1e5e9;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+#chatbot-input {
+  flex: 1;
+  border: 1px solid #e1e5e9;
+  border-radius: 24px;
+  padding: 12px 16px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#chatbot-input:focus {
+  border-color: #667eea;
+}
+
+#chatbot-send {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s;
+}
+
+#chatbot-send:hover {
+  transform: scale(1.05);
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 12px 16px;
+}
+
+.typing-dot {
+  width: 8px;
+  height: 8px;
+  background: #667eea;
+  border-radius: 50%;
+  animation: typing-bounce 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) { animation-delay: -0.32s; }
+.typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typing-bounce {
+  0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #dc3545;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-5px);}
+  60% {transform: translateY(-3px);}
+}
+
+.contact-info {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  font-size: 13px;
+}
+
+.contact-info strong {
+  color: #667eea;
+}
+
+@media (max-width: 480px) {
+  #chatbot-container {
+    width: calc(100vw - 40px);
+    height: 70vh;
+    right: 20px;
+    bottom: 80px;
+  }
+  
+  #chatbot-toggle {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+</style>
+
+<script>
+// IMPROVED CHATBOT WITH ACCURATE REPLIES
+class MAKEWITHUSChatbot {
+  constructor() {
+    this.container = document.getElementById('chatbot-container');
+    this.messagesContainer = document.getElementById('chatbot-messages');
+    this.input = document.getElementById('chatbot-input');
+    this.toggleBtn = document.getElementById('chatbot-toggle');
+    this.closeBtn = document.getElementById('chatbot-close');
+    this.sendBtn = document.getElementById('chatbot-send');
+    this.bookMeetingBtn = document.getElementById('book-meeting');
+    
+    this.userData = this.loadUserData();
+    this.conversationContext = this.loadConversationContext();
+    
+    this.init();
+  }
+
+  init() {
+    this.toggleBtn.addEventListener('click', () => this.toggleChat());
+    this.closeBtn.addEventListener('click', () => this.closeChat());
+    this.sendBtn.addEventListener('click', () => this.sendMessage());
+    this.input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') this.sendMessage();
+    });
+    
+    this.bookMeetingBtn.addEventListener('click', () => this.bookMeeting());
+    
+    // Show welcome message after a short delay
+    setTimeout(() => {
+      this.showWelcomeMessage();
+    }, 1000);
+  }
+
+  // ==================== ACCURATE RESPONSE HANDLER ====================
+  
+  handleUserMessageWithContext(message) {
+    const lowerMessage = message.toLowerCase();
+    let response = '';
+    let showQuickReplies = true;
+
+    // === FOUNDER INFORMATION ===
+    if (lowerMessage.includes('founder') || lowerMessage.includes('who started') || 
+        lowerMessage.includes('owner') || lowerMessage.includes('ceo') ||
+        lowerMessage.includes('sudarsanan') || lowerMessage.includes('sherhan') ||
+        lowerMessage.includes('who owns') || lowerMessage.includes('who created')) {
+      response = "MAKEWITHUS was founded by **Sudarsanan** and **Mohammed Sherhan**! 🚀\n\nTogether they bring extensive expertise in full-stack development, system architecture, and digital transformation. They're passionate about building solutions that solve real business problems.";
+    }
+    
+    // === CONTACT INFORMATION ===
+    else if (lowerMessage.includes('contact') || lowerMessage.includes('email') || 
+             lowerMessage.includes('gmail') || lowerMessage.includes('mail') ||
+             lowerMessage.includes('reach') || lowerMessage.includes('get in touch') ||
+             lowerMessage.includes('connect')) {
+      response = "You can reach us at:\n\n📧 **makewithus.in@gmail.com**\n\nWe typically respond within 2-4 hours during business days. For urgent matters, you can book a meeting directly with our founders.";
+      showQuickReplies = false;
+    }
+    
+    // === SERVICES ===
+    else if (lowerMessage.includes('service') || lowerMessage.includes('what do you') || 
+             lowerMessage.includes('offer') || lowerMessage.includes('provide') ||
+             lowerMessage.includes('do you build')) {
+      response = "At MAKEWITHUS, we specialize in:\n\n• 🌐 **Custom Website Development**\n• 📱 **Mobile Apps** (iOS & Android)\n• ☁️ **SaaS Platform Development**\n• 🏢 **Enterprise ERP Solutions**\n• 🛒 **E-commerce Platforms**\n• 💻 **Custom Software Solutions**\n\nWhich service are you most interested in?";
+    }
+    
+    // === WEBSITE DEVELOPMENT ===
+    else if (lowerMessage.includes('website') || lowerMessage.includes('web development') || 
+             lowerMessage.includes('web app') || lowerMessage.includes('landing page')) {
+      response = "We build **high-performance, responsive websites** that convert visitors into customers! 🎯\n\nOur websites feature:\n• Mobile-first responsive design\n• SEO optimization\n• Fast loading speeds\n• Modern UI/UX\n• CMS integration\n• E-commerce capabilities\n\nTypical project timeline: 2-6 weeks";
+    }
+    
+    // === MOBILE APPS ===
+    else if (lowerMessage.includes('app') || lowerMessage.includes('mobile') || 
+             lowerMessage.includes('ios') || lowerMessage.includes('android')) {
+      response = "We develop **native and cross-platform mobile applications**! 📱\n\nOur app development includes:\n• iOS & Android development\n• React Native for cross-platform\n• UI/UX design\n• API integration\n• App Store deployment\n• Ongoing maintenance\n\nPerfect for startups and enterprises alike!";
+    }
+    
+    // === SAAS DEVELOPMENT ===
+    else if (lowerMessage.includes('saas') || lowerMessage.includes('software as a service') || 
+             lowerMessage.includes('subscription') || lowerMessage.includes('platform')) {
+      response = "We build **scalable SaaS platforms** from ground up! ☁️\n\nOur SaaS expertise includes:\n• Multi-tenant architecture\n• Subscription billing systems\n• User management\n• Analytics dashboards\n• API development\n• Cloud deployment\n\nLet's discuss your SaaS vision!";
+    }
+    
+    // === ERP SOLUTIONS ===
+    else if (lowerMessage.includes('erp') || lowerMessage.includes('enterprise') || 
+             lowerMessage.includes('management system') || lowerMessage.includes('business software')) {
+      response = "We create **custom ERP solutions** that streamline your business! 🏢\n\nOur ERP systems handle:\n• Inventory management\n• Accounting & finance\n• HR management\n• CRM integration\n• Supply chain\n• Real-time analytics\n\nPerfect for growing businesses!";
+    }
+    
+    // === E-COMMERCE ===
+    else if (lowerMessage.includes('e-com') || lowerMessage.includes('ecommerce') || 
+             lowerMessage.includes('online store') || lowerMessage.includes('shop') ||
+             lowerMessage.includes('selling online')) {
+      response = "We build **powerful e-commerce platforms**! 🛒\n\nOur e-commerce solutions include:\n• Custom online stores\n• Payment gateway integration\n• Inventory management\n• Order tracking\n• Marketing tools\n• Multi-vendor marketplaces\n\nLet's build your online business!";
+    }
+    
+    // === PRICING ===
+    else if (lowerMessage.includes('price') || lowerMessage.includes('cost') || 
+             lowerMessage.includes('how much') || lowerMessage.includes('budget') ||
+             lowerMessage.includes('rate')) {
+      response = "Our projects are **custom-priced** based on your specific requirements! 💰\n\n**Typical ranges:**\n• Websites: $2,500 - $15,000+\n• Mobile Apps: $8,000 - $50,000+\n• SaaS Platforms: $15,000 - $100,000+\n• ERP Systems: $25,000 - $150,000+\n\nWant a precise quote? Share your project details!";
+    }
+    
+    // === PORTFOLIO ===
+    else if (lowerMessage.includes('portfolio') || lowerMessage.includes('work') || 
+             lowerMessage.includes('projects') || lowerMessage.includes('examples') ||
+             lowerMessage.includes('show me')) {
+      response = "We've delivered **50+ successful projects** across various industries! 🏆\n\nOur portfolio includes:\n• E-commerce platforms\n• SaaS applications\n• Mobile apps\n• Custom ERP systems\n• Business websites\n\nI can connect you with specific case studies based on your interest!";
+    }
+    
+    // === PROCESS ===
+    else if (lowerMessage.includes('process') || lowerMessage.includes('how you work') || 
+             lowerMessage.includes('methodology') || lowerMessage.includes('approach') ||
+             lowerMessage.includes('timeline')) {
+      response = "Our **proven development process**:\n\n1. **Discovery** - Understand your needs\n2. **Planning** - Create detailed roadmap\n3. **Design** - UI/UX mockups\n4. **Development** - Agile sprints\n5. **Testing** - Quality assurance\n6. **Launch** - Deployment & support\n\nTypical timeline: 4-16 weeks depending on complexity";
+    }
+    
+    // === TECHNOLOGY ===
+    else if (lowerMessage.includes('tech') || lowerMessage.includes('technology') || 
+             lowerMessage.includes('stack') || lowerMessage.includes('framework') ||
+             lowerMessage.includes('what technology')) {
+      response = "We work with **modern, scalable technologies**:\n\n**Frontend:** React, Vue, Angular\n**Backend:** Node.js, Python, PHP\n**Mobile:** React Native, Flutter\n**Database:** MongoDB, PostgreSQL, MySQL\n**Cloud:** AWS, Google Cloud, Azure\n**Tools:** Docker, Git, CI/CD\n\nWe choose the best stack for your project!";
+    }
+    
+    // === GREETINGS ===
+    else if (lowerMessage.includes('hi') || lowerMessage.includes('hello') || 
+             lowerMessage.includes('hey') || lowerMessage.includes('good morning') ||
+             lowerMessage.includes('good afternoon') || lowerMessage.includes('good evening')) {
+      response = this.userData.name 
+        ? `Hello ${this.userData.name}! 👋 Great to see you again! How can I help you today?`
+        : "Hello there! 👋 I'm your MAKEWITHUS assistant. I can help you with websites, apps, SaaS, ERP, and custom software. What's your name?";
+    }
+    
+    // === THANKS ===
+    else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
+      response = "You're welcome! 😊 Is there anything else you'd like to know about our services or would you like to discuss your project with our founders Sudarsanan and Mohammed Sherhan?";
+    }
+    
+    // === DEFAULT RESPONSE ===
+    else {
+      response = "I'm here to help you learn about MAKEWITHUS! You can ask me about:\n\n• Our services (websites, apps, SaaS, ERP)\n• Our founders Sudarsanan & Mohammed Sherhan\n• Project pricing and timelines\n• Contact information\n• Our development process\n\nWhat would you like to know?";
+    }
+
+    this.addMessage(response, 'bot', showQuickReplies);
+  }
+
+  // ==================== CORE CHATBOT FUNCTIONS ====================
+  
+  loadUserData() {
+    const saved = localStorage.getItem('makewithus_user_data');
+    return saved ? JSON.parse(saved) : {
+      name: '',
+      preferences: {},
+      previousChats: [],
+      lastVisit: null,
+      visitCount: 0
+    };
+  }
+
+  saveUserData() {
+    localStorage.setItem('makewithus_user_data', JSON.stringify(this.userData));
+  }
+
+  loadConversationContext() {
+    const saved = localStorage.getItem('makewithus_conversation_context');
+    return saved ? JSON.parse(saved) : [];
+  }
+
+  saveConversationContext() {
+    localStorage.setItem('makewithus_conversation_context', JSON.stringify(this.conversationContext));
+  }
+
+  updateConversationContext(message, sender) {
+    this.conversationContext.push({
+      message,
+      sender,
+      timestamp: new Date().toISOString()
+    });
+    
+    if (this.conversationContext.length > 10) {
+      this.conversationContext = this.conversationContext.slice(-10);
+    }
+    
+    this.saveConversationContext();
+  }
+
+  showWelcomeMessage() {
+    this.userData.visitCount++;
+    this.userData.lastVisit = new Date().toISOString();
+    this.saveUserData();
+
+    let welcomeMessage = this.userData.name 
+      ? `Welcome back, ${this.userData.name}! 👋 Ready to continue our conversation?`
+      : "Hi there! I'm your MAKEWITHUS assistant. I can help you with websites, apps, SaaS, ERP, and custom software. What's your name?";
+    
+    this.addMessage(welcomeMessage, 'bot', true);
+  }
+
+  addMessage(text, sender, showQuickReplies = false) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}-message`;
+    
+    const avatar = document.createElement('div');
+    avatar.className = 'message-avatar';
+    avatar.textContent = sender === 'user' ? 'Y' : 'MW';
+    
+    const content = document.createElement('div');
+    content.className = 'message-content';
+    
+    const messageText = document.createElement('p');
+    messageText.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    content.appendChild(messageText);
+    
+    if (showQuickReplies && sender === 'bot') {
+      const quickReplies = this.createQuickReplies();
+      content.appendChild(quickReplies);
+    }
+    
+    messageDiv.appendChild(avatar);
+    messageDiv.appendChild(content);
+    
+    this.messagesContainer.appendChild(messageDiv);
+    this.scrollToBottom();
+    
+    this.updateConversationContext(text, sender);
+  }
+
+  createQuickReplies() {
+    const container = document.createElement('div');
+    container.className = 'quick-replies';
+    
+    const replies = [
+      { text: "Our Services", message: "What services do you offer?" },
+      { text: "Founders", message: "Who are the founders?" },
+      { text: "Contact", message: "What is your email?" },
+      { text: "Pricing", message: "How much does it cost?" },
+      { text: "Book Meeting", message: "I want to book a meeting" }
+    ];
+    
+    replies.forEach(reply => {
+      const button = document.createElement('button');
+      button.className = 'quick-reply';
+      button.textContent = reply.text;
+      button.setAttribute('data-message', reply.message);
+      container.appendChild(button);
+    });
+    
+    return container;
+  }
+
+  sendMessage() {
+    const message = this.input.value.trim();
+    if (!message) return;
+
+    this.addMessage(message, 'user');
+    this.input.value = '';
+
+    // Check if this might be the user's name
+    if (!this.userData.name && this.isLikelyName(message)) {
+      this.userData.name = message;
+      this.saveUserData();
+      this.addMessage(`Nice to meet you, ${message}! 🎉 How can I help you with your project today?`, 'bot', true);
+      return;
+    }
+
+    const typingIndicator = this.showTypingIndicator();
+    
+    setTimeout(() => {
+      this.hideTypingIndicator();
+      this.handleUserMessageWithContext(message);
+    }, 1000 + Math.random() * 500);
+  }
+
+  isLikelyName(message) {
+    return message.split(' ').length <= 2 && message.length <= 20 && 
+           !message.includes('?') && !this.isServiceRelated(message);
+  }
+
+  isServiceRelated(message) {
+    const serviceKeywords = ['website', 'app', 'saas', 'erp', 'ecommerce', 'software', 'price', 'cost', 'service', 'project'];
+    return serviceKeywords.some(keyword => message.toLowerCase().includes(keyword));
+  }
+
+  showTypingIndicator() {
+    const indicator = document.createElement('div');
+    indicator.className = 'message bot-message typing-indicator';
+    indicator.id = 'typing-indicator';
+    
+    const avatar = document.createElement('div');
+    avatar.className = 'message-avatar';
+    avatar.textContent = 'MW';
+    
+    const content = document.createElement('div');
+    content.className = 'message-content';
+    
+    const dots = document.createElement('div');
+    dots.className = 'typing-dots';
+    for (let i = 0; i < 3; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'typing-dot';
+      dots.appendChild(dot);
+    }
+    
+    content.appendChild(dots);
+    indicator.appendChild(avatar);
+    indicator.appendChild(content);
+    
+    this.messagesContainer.appendChild(indicator);
+    this.scrollToBottom();
+    
+    return indicator;
+  }
+
+  hideTypingIndicator() {
+    const indicator = document.getElementById('typing-indicator');
+    if (indicator) {
+      indicator.remove();
+    }
+  }
+
+  bookMeeting() {
+    // You can replace this with your actual booking URL
+    window.open('https://calendly.com/makewithus/meeting', '_blank');
+    this.addMessage("I've opened our meeting scheduler! Choose a time to speak directly with Sudarsanan or Mohammed Sherhan.", 'bot');
+  }
+
+  scrollToBottom() {
+    this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+  }
+
+  toggleChat() {
+    this.container.classList.toggle('active');
+    if (this.container.classList.contains('active')) {
+      this.input.focus();
+      document.getElementById('global-notification').style.display = 'none';
+    }
+  }
+
+  closeChat() {
+    this.container.classList.remove('active');
+  }
+}
+
+// Initialize chatbot
+document.addEventListener('DOMContentLoaded', function() {
+  new MAKEWITHUSChatbot();
+  
+  // Quick reply event delegation
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('quick-reply')) {
+      const message = e.target.getAttribute('data-message');
+      const chatbot = document.querySelector('#chatbot-input');
+      chatbot.value = message;
+      document.getElementById('chatbot-send').click();
+    }
+  });
+});
+</script>
+</body>
+</html>
