@@ -3130,6 +3130,16 @@ a {
   -ms-transform: rotate(13deg);
   transform: rotate(13deg);
 }
+.image-halal {
+  position: static;
+  left: auto;
+  bottom: 85%;
+  left: 60%;
+  display: block;
+  width: 320px;
+  max-width: none;
+
+}
 .side-bar {
   position: fixed;
   left: auto;

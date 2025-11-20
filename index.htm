@@ -92,6 +92,33 @@
   <link href="6037a09f2ee93fde2f5d9ccf/607d83e9b04e033744d83133_favicon.png" rel="shortcut icon" type="image/x-icon">
   <link href="6037a09f2ee93fde2f5d9ccf/607d85ba90b1a7e267f8db5d_webclip.jpg" rel="apple-touch-icon">
   <meta name="format-detection" content="telephone=no">
+  <style>
+    /* Ensure hero images can be overlapped without changing layout */
+    .hero-img { position: relative; }
+
+    /* Position the halal badge above the hero image */
+    .image-halal {
+      position: absolute;
+      bottom: 85%;
+      left: 70%;
+      z-index: 3;
+      max-width: 320px;
+      pointer-events: none;
+      transform: translateZ(0);
+    }
+
+    /* Keep the main hero image flow intact */
+    .image-4 { display: block; }
+
+    /* Responsive adjustments so overlap remains proportional */
+    @media (max-width: 991px) {
+      .image-halal { max-width: 240px; top: 0%; left: 60%; }
+    }
+
+    @media (max-width: 480px) {
+      .image-halal { max-width: 180px; top: 0%; left: 60%; }
+    }
+  </style>
 </head>
 
 <body>
@@ -107,7 +134,7 @@
     </div>
     <nav class="navigation">
       <div class="header-cont"><a href="index.htm" aria-current="page" class="logo-link w-inline-block w--current"><img
-            src="mwslogo.png" loading="lazy" width="123" height="100" alt="Logo of  Quality Meats."
+            src="images/kklogofin.png" loading="lazy" width="123" height="100" alt="Logo of  Quality Meats."
             class="image-20"></a>
         <div class="cenetr-menu-wrap">
           <div class="link-cont"><a href="index.htm" aria-current="page" class="nav-link w-inline-block w--current">
@@ -149,7 +176,8 @@
       </div>
     </nav>
     <section id="hero-section" class="hero-section">
-      <div class="scrolldown-wrapper"><img src="6037a09f2ee93fde2f5d9ccf/60380e1303652d7c97e8c096_down-arrow.svg"
+      <div class="scrolldown-wrapper">
+        <img src="6037a09f2ee93fde2f5d9ccf/60380e1303652d7c97e8c096_down-arrow.svg"
           loading="lazy" width="256" data-w-id="28a034fe-a96c-bb84-00c1-e9a6f8459b49" alt="scroll down arrow icon"
           class="arrow-image"></div>
       <div class="mycontain1440 hero">
@@ -166,10 +194,17 @@
           <div class="spacer is--small"></div><a href="meats.html" class="button red is--ghost home w-button">View
             Products</a>
         </div>
-        <div class="hero-img"><img src="assets/muttonhero.png" loading="lazy"
+       
+        <div class="hero-img">
+          <img src="images/halal.png" loading="lazy"
+            alt="a premium t-bone steak on wooden board at Liam&#x27;s Quality Meats"
+            sizes="(max-width: 479px) 96vw, (max-width: 767px) 450px, (max-width: 991px) 600px, 70vw"
+            class="image-halal">
+          <img src="assets/muttonhero.png" loading="lazy"
             alt="a premium t-bone steak on wooden board at Liam&#x27;s Quality Meats"
             sizes="(max-width: 479px) 96vw, (max-width: 767px) 450px, (max-width: 991px) 600px, 70vw"
             class="image-4"></div>
+             
       </div>
     </section>
     <section class="section is--red">
@@ -343,8 +378,8 @@
           </div>
         </div>
         <div data-w-id="349a4c6d-e761-5c79-e8a5-862ec962fc47" class="bag-wrap"><img
-            src="6037a09f2ee93fde2f5d9ccf/6079bfea92b64a831d413fe4_bag-red-7.png" loading="lazy" width="831"
-            srcset="6037a09f2ee93fde2f5d9ccf/6079bfea92b64a831d413fe4_bag-red-7-p-500.png 500w, 6037a09f2ee93fde2f5d9ccf/6079bfea92b64a831d413fe4_bag-red-7-p-800.png 800w, 6037a09f2ee93fde2f5d9ccf/6079bfea92b64a831d413fe4_bag-red-7-p-1080.png 1080w, 6037a09f2ee93fde2f5d9ccf/6079bfea92b64a831d413fe4_bag-red-7.png 1500w"
+            src="images/bag-final.png" loading="lazy" width="831"
+           
             alt="Liams quality meats bag with slogan quality service satisfaction."
             sizes="(max-width: 767px) 100vw, (max-width: 991px) 600px, 60vw" class="image-3"></div>
       </div>
@@ -1196,7 +1231,7 @@
     <footer class="footer-section">
       <div class="mycontain1440">
         <div class="footer-logo-wrap">
-          <div class="divider footer"></div><a href="#" class="footer-logo w-inline-block"><img src="mwslogo.png"
+          <div class="divider footer"></div><a href="#" class="footer-logo w-inline-block"><img src="images/kklogofin.png"
               loading="lazy" alt="KK Quality Meats logo"></a>
           <div class="divider footer"></div>
         </div>
