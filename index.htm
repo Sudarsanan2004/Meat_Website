@@ -16,14 +16,12 @@
   <meta
     content="Shop fresh and high-quality mutton at KK Mutton Stall in Trivandrum. We provide premium cuts, hygienic meat, and trusted service for families and restaurants."
     property="og:description">
-  <meta content="images/thumbnail.png"
-    property="og:image">
+  <meta content="images/thumbnail.png" property="og:image">
   <meta content="KK Mutton Stall | Fresh Mutton & Premium Butcher in Trivandrum" property="twitter:title">
   <meta
     content="Get fresh and hygienic mutton from KK Mutton Stall in Trivandrum. Premium cuts, trusted local butcher, and quality meat for homes and restaurants."
     property="twitter:description">
-  <meta content="images/thumbnail.png"
-    property="twitter:image">
+  <meta content="images/thumbnail.png" property="twitter:image">
   <meta property="og:type" content="website">
   <meta content="summary_large_image" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -93,7 +91,9 @@
     }
 
     /* Ensure hero images can be overlapped without changing layout */
-    .hero-img { position: relative; }
+    .hero-img {
+      position: relative;
+    }
 
     /* Position the halal badge above the hero image */
     .image-halal {
@@ -107,15 +107,25 @@
     }
 
     /* Keep the main hero image flow intact */
-    .image-4 { display: block; }
+    .image-4 {
+      display: block;
+    }
 
     /* Responsive adjustments so overlap remains proportional */
     @media (max-width: 991px) {
-      .image-halal { max-width: 240px; top: 0%; left: 60%; }
+      .image-halal {
+        max-width: 240px;
+        top: 0%;
+        left: 60%;
+      }
     }
 
     @media (max-width: 480px) {
-      .image-halal { max-width: 180px; top: 0%; left: 60%; }
+      .image-halal {
+        max-width: 180px;
+        top: 0%;
+        left: 60%;
+      }
     }
   </style>
   <style>
@@ -126,6 +136,11 @@
       line-height: 1 !important;
       text-transform: uppercase !important;
       letter-spacing: 0.01em !important;
+    }
+
+    .desktop-menu-only,
+    .mobile-menu-item-wrap {
+      display: none !important;
     }
   </style>
 </head>
@@ -154,19 +169,20 @@
               <div class="nav-text">About Us</div>
               <div class="hover-line"></div>
             </a>
-             <a href="branch.html" class="nav-link w-inline-block">
+            <a href="branch.html" class="nav-link w-inline-block">
               <div class="nav-text">Our Branches</div>
               <div class="hover-line"></div>
             </a>
-             <a href="gallery.html" class="nav-link w-inline-block">
+            <a href="gallery.html" class="nav-link w-inline-block">
               <div class="nav-text">Gallery</div>
               <div class="hover-line"></div>
             </a>
-            <a href="#" class="nav-link dropdown w-inline-block">
+            <a href="meats.html" class="nav-link w-inline-block">
               <div class="nav-text">Products</div>
               <div class="hover-line"></div>
-            </a></div>
-            <a href="contact-us.html" class="button red is--ghost w-button">get in touch</a>
+            </a>
+          </div>
+          <a href="contact-us.html" class="button red is--ghost w-button">get in touch</a>
         </div>
       </div>
       <div class="w-embed">
@@ -197,9 +213,9 @@
     </nav>
     <section id="hero-section" class="hero-section">
       <div class="scrolldown-wrapper">
-        <img src="6037a09f2ee93fde2f5d9ccf/60380e1303652d7c97e8c096_down-arrow.svg"
-          loading="lazy" width="256" data-w-id="28a034fe-a96c-bb84-00c1-e9a6f8459b49" alt="scroll down arrow icon"
-          class="arrow-image"></div>
+        <img src="6037a09f2ee93fde2f5d9ccf/60380e1303652d7c97e8c096_down-arrow.svg" loading="lazy" width="256"
+          data-w-id="28a034fe-a96c-bb84-00c1-e9a6f8459b49" alt="scroll down arrow icon" class="arrow-image">
+      </div>
       <div class="mycontain1440 hero">
         <div class="hero-content-wrap">
           <div class="mask">
@@ -208,14 +224,14 @@
               class="hero-text">KK MUTTON STALL</div>
           </div>
           <h1 class="fade-up tricks right">PREMIUM FRESH <br>MUTTON</h1>
-        
+
           <p id="p" class="p is--white is--center">KK Mutton Stall is your trusted local butcher, offering fresh,
             tender, and hygienic mutton across multiple locations. Enjoy premium-quality mutton cuts that bring
             authentic flavor to your table.</p>
           <div class="spacer is--small"></div><a href="meats.html" class="button red is--ghost home w-button">View
             Products</a>
         </div>
-       
+
         <div class="hero-img">
           <img src="images/halal.png" loading="lazy"
             alt="a premium t-bone steak on wooden board at Liam&#x27;s Quality Meats"
@@ -223,17 +239,16 @@
             class="image-halal">
           <img src="assets/muttonhero.png" loading="lazy"
             alt="a premium t-bone steak on wooden board at Liam&#x27;s Quality Meats"
-            sizes="(max-width: 479px) 96vw, (max-width: 767px) 450px, (max-width: 991px) 600px, 70vw"
-            class="image-4"></div>
-             
+            sizes="(max-width: 479px) 96vw, (max-width: 767px) 450px, (max-width: 991px) 600px, 70vw" class="image-4">
+        </div>
+
       </div>
     </section>
     <section class="section is--red">
       <div class="mycontain1440">
         <div class="w-layout-grid grid-hello">
-          <div class="liam-image-wrap"><img src="" loading="lazy"
-              alt="A picture of the owners of Quality Meats" width="500"
-              sizes="(max-width: 479px) 96vw, (max-width: 767px) 97vw, (max-width: 991px) 95vw, 94vw"
+          <div class="liam-image-wrap"><img src="" loading="lazy" alt="A picture of the owners of Quality Meats"
+              width="500" sizes="(max-width: 479px) 96vw, (max-width: 767px) 97vw, (max-width: 991px) 95vw, 94vw"
               class="liam-lynda-image"></div>
           <div id="w-node-_07614102-40ad-556e-12ae-921b8d87ce2f-c6ae7d2c" class="content-wrap-grid">
             <div class="text-content-grid">
@@ -284,10 +299,9 @@
               mutton is fresh, tender, and hygienic, sourced from trusted local farms. Our commitment to quality and
               taste ensures that every meal you prepare is flavorful and satisfying.</p>
           </div>
-          <div class="image-wrapper"><img
-              src="assets/goateating.png" loading="lazy"
-              alt="A charolais cow eating grass in a field"
-              width="600" sizes="(max-width: 479px) 96vw, (max-width: 767px) 97vw, (max-width: 991px) 95vw, 94vw"
+          <div class="image-wrapper"><img src="assets/goateating.png" loading="lazy"
+              alt="A charolais cow eating grass in a field" width="600"
+              sizes="(max-width: 479px) 96vw, (max-width: 767px) 97vw, (max-width: 991px) 95vw, 94vw"
               class="image-values cow"></div>
         </div>
         <div class="lottie-contain top">
@@ -298,10 +312,9 @@
             data-duration="0"></div>
         </div>
         <div class="w-layout-grid grid-value two">
-          <div class="image-wrapper"><img
-              src="assets/goatfarm.png" loading="lazy"
-              alt="New Zealand lambs eating grass beside lake hawea."
-              width="600" sizes="(max-width: 479px) 96vw, (max-width: 767px) 97vw, (max-width: 991px) 95vw, 94vw"
+          <div class="image-wrapper"><img src="assets/goatfarm.png" loading="lazy"
+              alt="New Zealand lambs eating grass beside lake hawea." width="600"
+              sizes="(max-width: 479px) 96vw, (max-width: 767px) 97vw, (max-width: 991px) 95vw, 94vw"
               class="image-values lamb"></div>
           <div id="w-node-_735673cd-3bdd-4d9f-29f6-37d33b691b65-c6ae7d2c" class="grid-content-right">
             <div class="circle-two">
@@ -341,8 +354,7 @@
           <div id="circle-text" class="circle-text">3</div>
           <div id="circle-text" class="mobile-circle-text">3</div>
         </div>
-        <div class="image1440"><img src="assets/muttonsubhero.png"
-            loading="lazy" width="1350"
+        <div class="image1440"><img src="assets/muttonsubhero.png" loading="lazy" width="1350"
             alt="5 beautiful cuts of beef including sirloin, fillet, ribeye and black angus." sizes="100vw"
             class="image-21"></div>
       </div>
@@ -398,10 +410,8 @@
               doing just that for our customers to date and we look forward to continuing this well into the future.</p>
           </div>
         </div>
-        <div data-w-id="349a4c6d-e761-5c79-e8a5-862ec962fc47" class="bag-wrap"><img
-            src="images/bag-final.png" loading="lazy" width="831"
-           
-            alt="Liams quality meats bag with slogan quality service satisfaction."
+        <div data-w-id="349a4c6d-e761-5c79-e8a5-862ec962fc47" class="bag-wrap"><img src="images/bag-final.png"
+            loading="lazy" width="831" alt="Liams quality meats bag with slogan quality service satisfaction."
             sizes="(max-width: 767px) 100vw, (max-width: 991px) 600px, 60vw" class="image-3"></div>
       </div>
     </section>
@@ -705,48 +715,38 @@
             <div class="marquee-track">
               <!-- Client logos will be duplicated for seamless looping -->
               <div class="client-item">
-                <img src="images/azad.png" alt="Client 1"
-                  class="client-logo">
+                <img src="images/azad.png" alt="Client 1" class="client-logo">
               </div>
               <div class="client-item">
-                <img src="images/buhari.png" alt="Client 2"
-                  class="client-logo">
+                <img src="images/buhari.png" alt="Client 2" class="client-logo">
               </div>
               <div class="client-item">
-                <img src="images/imperial.png" alt="Client 3"
-                  class="client-logo">
+                <img src="images/imperial.png" alt="Client 3" class="client-logo">
               </div>
               <div class="client-item">
-                <img src="images/rahmania.png" alt="Client 4"
-                  class="client-logo">
+                <img src="images/rahmania.png" alt="Client 4" class="client-logo">
               </div>
               <div class="client-item">
-                <img src="images/zamzam.png" alt="Client 5"
-                  class="client-logo">
+                <img src="images/zamzam.png" alt="Client 5" class="client-logo">
               </div>
-             
+
               <!-- Duplicate for seamless looping -->
-               <div class="client-item">
-                <img src="images/azad.png" alt="Client 1"
-                  class="client-logo">
+              <div class="client-item">
+                <img src="images/azad.png" alt="Client 1" class="client-logo">
               </div>
               <div class="client-item">
-                <img src="images/buhari.png" alt="Client 2"
-                  class="client-logo">
+                <img src="images/buhari.png" alt="Client 2" class="client-logo">
               </div>
               <div class="client-item">
-                <img src="images/imperial.png" alt="Client 3"
-                  class="client-logo">
+                <img src="images/imperial.png" alt="Client 3" class="client-logo">
               </div>
               <div class="client-item">
-                <img src="images/rahmania.png" alt="Client 4"
-                  class="client-logo">
+                <img src="images/rahmania.png" alt="Client 4" class="client-logo">
               </div>
               <div class="client-item">
-                <img src="images/zamzam.png" alt="Client 5"
-                  class="client-logo">
+                <img src="images/zamzam.png" alt="Client 5" class="client-logo">
               </div>
-             
+
             </div>
           </div>
 
@@ -810,7 +810,7 @@
         <div data-delay="4000" data-animation="outin" class="slider-3 w-slider" data-autoplay="false"
           data-easing="ease-in-out" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0"
           data-nav-spacing="3" data-duration="500" data-infinite="true">
-         <div class="w-slider-mask">
+          <div class="w-slider-mask">
             <div class="w-slide">
               <div class="div-block-8">
                 <div class="w-layout-grid grid-11">
@@ -859,9 +859,8 @@
                     <div class="spacer display small"></div>
                     <div class="price-text">from ₹799 per/kg</div>
                   </div>
-                  <div class="slider-wrap-c"><img
-                      src="assets/MUTTONRIBS.png" loading="lazy"
-                      width="487" alt="Lean pork steak at Liam&#x27;s Quality Meats" class="image-18"></div>
+                  <div class="slider-wrap-c"><img src="assets/MUTTONRIBS.png" loading="lazy" width="487"
+                      alt="Lean pork steak at Liam&#x27;s Quality Meats" class="image-18"></div>
                   <div class="slider-wrap-r">
                     <div class="perfect-slider-text">perfect for</div>
                     <div class="div-block-12">
@@ -892,11 +891,9 @@
                     <div class="spacer display small"></div>
                     <div class="price-text">from ₹749 per/kg</div>
                   </div>
-                  <div class="slider-wrap-c"><img
-                      src="assets/MUTTONKEEMA.png" loading="lazy"
-                      width="491" sizes="(max-width: 479px) 75vw, (max-width: 767px) 64vw, 491px"
-                      alt="delicious pork fillet at Liam&#x27;s Quality Meats"
-                      class="image-18"></div>
+                  <div class="slider-wrap-c"><img src="assets/MUTTONKEEMA.png" loading="lazy" width="491"
+                      sizes="(max-width: 479px) 75vw, (max-width: 767px) 64vw, 491px"
+                      alt="delicious pork fillet at Liam&#x27;s Quality Meats" class="image-18"></div>
                   <div class="slider-wrap-r">
                     <div class="perfect-slider-text">perfect for</div>
                     <div class="div-block-12">
@@ -927,11 +924,9 @@
                     <div class="spacer display small"></div>
                     <div class="price-text">from ₹899 per/kg</div>
                   </div>
-                  <div class="slider-wrap-c"><img
-                      src="assets/MUTTONCHOPS.png" loading="lazy"
-                      width="500" sizes="(max-width: 479px) 75vw, (max-width: 767px) 65vw, 500px"
-                      alt="Fresh pork roasting joint at Liam&#x27;s Quality Meats"
-                      class="image-18"></div>
+                  <div class="slider-wrap-c"><img src="assets/MUTTONCHOPS.png" loading="lazy" width="500"
+                      sizes="(max-width: 479px) 75vw, (max-width: 767px) 65vw, 500px"
+                      alt="Fresh pork roasting joint at Liam&#x27;s Quality Meats" class="image-18"></div>
                   <div class="slider-wrap-r">
                     <div class="perfect-slider-text">perfect for</div>
                     <div class="div-block-12">
@@ -1044,8 +1039,9 @@
           Quality Meats!</p>
         <div class="spacer"></div>
         <div id="subscribe" class="form-subscribe w-form">
-          <form  action="https://formspree.io/f/manvplew" id="wf-form-Subscribe-Form" name="wf-form-Subscribe-Form" data-name="Subscribe Form" method="POST"
-            data-wf-page-id="60535cd4fcd22f8ac6ae7d2c" data-wf-element-id="05afc350-8684-2aaf-3f62-64e9291ec5f1">
+          <form action="https://formspree.io/f/manvplew" id="wf-form-Subscribe-Form" name="wf-form-Subscribe-Form"
+            data-name="Subscribe Form" method="POST" data-wf-page-id="60535cd4fcd22f8ac6ae7d2c"
+            data-wf-element-id="05afc350-8684-2aaf-3f62-64e9291ec5f1">
             <div class="w-layout-grid grid-2">
               <div id="w-node-_05afc350-8684-2aaf-3f62-64e9291ec5f3-291ec5e9" class="form-text-wrap"><input
                   class="text-field w-input" maxlength="256" name="email-2" data-name="Email 2"
@@ -1306,8 +1302,7 @@
               </div>
 
               <div class="action-buttons">
-                <a href="branch.html"
-                  class="btn btn-primary">Get Directions</a>
+                <a href="branch.html" class="btn btn-primary">Get Directions</a>
                 <a href="contact-us.html" class="btn btn-secondary">Contact Us</a>
               </div>
             </div>
@@ -1318,19 +1313,17 @@
     <footer class="footer-section">
       <div class="mycontain1440">
         <div class="footer-logo-wrap">
-          <div class="divider footer"></div><a href="#" class="footer-logo w-inline-block"><img src="images/kklogofin.png"
-              loading="lazy" alt="KK Quality Meats logo"></a>
+          <div class="divider footer"></div><a href="#" class="footer-logo w-inline-block"><img
+              src="images/kklogofin.png" loading="lazy" alt="KK Quality Meats logo"></a>
           <div class="divider footer"></div>
         </div>
         <div class="w-layout-grid grid-12">
           <div id="w-node-_423c6c6d-8ee6-bda8-fc17-391db02b68b9-14740466" class="footer-cont _1">
             <div class="div-block-13"><span class="footer-link">Legal / Policies</span>
-              <a id="link"
-                href="#" class="sub-link-footer">Terms & Conditions</a>
-                <a id="link"
-                href="#" class="sub-link-footer">Privacy Policy</a>
-              
-              </div>
+              <a id="link" href="#" class="sub-link-footer">Terms & Conditions</a>
+              <a id="link" href="#" class="sub-link-footer">Privacy Policy</a>
+
+            </div>
           </div>
           <div id="w-node-_80e4570e-ce18-2261-36e1-9ec52c7031e5-14740466" class="footer-cont _1">
             <div class="div-block-14"><span class="footer-link">sitemap</span>
@@ -1338,6 +1331,7 @@
               <a id="link" href="about-us.html" class="sub-link-footer">About Us</a>
               <a id="link" href="contact-us.html" class="sub-link-footer">Contact Us</a>
               <a id="link" href="gallery.html" class="sub-link-footer">Gallery</a>
+              <a id="link" href="branch.html" class="sub-link-footer">Our Branches</a>
             </div>
           </div>
           <div id="w-node-fe3c9da7-80e3-f687-bdf3-60568ea2ccaa-14740466" class="footer-cont _1">
@@ -1362,20 +1356,18 @@
           </div>
         </div>
         <div class="footer-socials">
-          <div class="socials-wrapper"><a href="https://www.instagram.com/kkmuttonstall/?utm_source=ig_web_button_share_sheet" target="_blank" class="social-link w-inline-block"><img
-                src="svg/insta.svg" loading="lazy"
-                width="500" alt="Instagram social link icon"></a>
-                <a href="https://www.facebook.com/people/KK-Mutton-Stall/61582587069553/" target="_blank"
-              class="social-link w-inline-block"><img
-                src="svg/fb.svg" loading="lazy" width="256"
+          <div class="socials-wrapper"><a
+              href="https://www.instagram.com/kkmuttonstall/?utm_source=ig_web_button_share_sheet" target="_blank"
+              class="social-link w-inline-block"><img src="svg/insta.svg" loading="lazy" width="500"
+                alt="Instagram social link icon"></a>
+            <a href="https://www.facebook.com/people/KK-Mutton-Stall/61582587069553/" target="_blank"
+              class="social-link w-inline-block"><img src="svg/fb.svg" loading="lazy" width="256"
                 alt="facebook social link icon"></a>
-                <a href="https://x.com/KKMUTTONSTALL" target="_blank" class="social-link w-inline-block"><img
-                src="svg/x.svg" loading="lazy"
-                width="500" alt="twitter social link icon"></a>
-                <a href="https://www.youtube.com/@KKMUTTONSTALL" target="_blank" class="social-link w-inline-block"><img
-                src="svg/youtube.svg" loading="lazy"
-                width="500" alt="Youtube social link icon"></a>
-              </div>
+            <a href="https://x.com/KKMUTTONSTALL" target="_blank" class="social-link w-inline-block"><img
+                src="svg/x.svg" loading="lazy" width="500" alt="twitter social link icon"></a>
+            <a href="https://www.youtube.com/@KKMUTTONSTALL" target="_blank" class="social-link w-inline-block"><img
+                src="svg/youtube.svg" loading="lazy" width="500" alt="Youtube social link icon"></a>
+          </div>
         </div>
         <div class="bottom-text-wrap">
           <div class="rights-text">2025 All Rights Reserved KK MUTTON STALL <br> Developed by <a
@@ -1425,7 +1417,7 @@
             <div class="nav-text-tablet">About Us</div>
             <div class="hover-line"></div>
           </a></li>
-        <li class="list-item-3"><a href="#" class="nav-link products mobile w-inline-block">
+        <li class="list-item-3"><a href="meats.html" class="nav-link w-inline-block">
             <div class="product-button">Products</div>
             <div class="hover-line"></div>
           </a></li>
