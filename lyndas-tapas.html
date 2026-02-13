@@ -49,9 +49,16 @@
             <div class="nav-text-tablet">About Us</div>
             <div class="hover-line"></div>
           </a></li>
-        <li class="list-item-3"> <a data-w-id="bb399e39-55a3-0348-92d9-ed8d5fb14143" href="meats.html"
-            class="nav-link w-inline-block">
-            <div data-w-id="bb399e39-55a3-0348-92d9-ed8d5fb14144" class="product-button">Products</div>
+        <li class="list-item-branch"><a href="branch.html" class="nav-link mobile _3 w-inline-block">
+            <div class="nav-text-tablet">Our Branches</div>
+            <div class="hover-line"></div>
+          </a></li>
+        <li class="list-item-gallery"><a href="gallery.html" class="nav-link mobile _4 w-inline-block">
+            <div class="nav-text-tablet">Gallery</div>
+            <div class="hover-line"></div>
+          </a></li>
+        <li class="list-item-3"><a href="meats.html" class="nav-link mobile _5 w-inline-block">
+            <div class="nav-text-tablet">Products</div>
             <div class="hover-line"></div>
           </a></li>
       </ol>
@@ -86,20 +93,27 @@
       </div><a href="contact-us.html" class="button red is--ghost is--mobile w-button">get in touch</a>
       <div class="social-wrap">
         <div class="follow-text">Follow us on Social Media</div>
-        <div class="social-icon-wrap"><a href="#" class="social-link w-inline-block"><img
-              src="6037a09f2ee93fde2f5d9ccf/604677da276db73f256f6f4e_instagram%20%281%29-1.svg" loading="lazy"
-              alt="Instagram social media link icon"></a><a href="#" class="social-link w-inline-block"><img
-              src="6037a09f2ee93fde2f5d9ccf/604677da73d0574ca8380c66_facebook-1.svg" loading="lazy"
-              alt="facebook social media link icon"></a></div>
+        <div class="social-icon-wrap"><a
+            href="https://www.instagram.com/kkmuttonstall/?utm_source=ig_web_button_share_sheet" target="_blank"
+            class="social-link w-inline-block"><img src="svg/insta.svg" loading="lazy" width="40" height="40"
+              alt="Instagram social media link icon"></a><a
+            href="https://www.facebook.com/people/KK-Mutton-Stall/61582587069553/" target="_blank"
+            class="social-link w-inline-block"><img src="svg/fb.svg" loading="lazy" width="40" height="40"
+              alt="facebook social media link icon"></a><a href="https://x.com/KKMUTTONSTALL" target="_blank"
+            class="social-link w-inline-block"><img src="svg/x.svg" loading="lazy" width="40" height="40"
+              alt="Twitter/X social media link icon"></a><a href="https://www.youtube.com/@KKMUTTONSTALL" target="_blank"
+            class="social-link w-inline-block"><img src="svg/youtube.svg" loading="lazy" width="40" height="40"
+              alt="Youtube social media link icon"></a></div>
       </div><img src="6037a09f2ee93fde2f5d9ccf/607c2456966520250c7f0032_beef-on-fork-1-1.png" loading="lazy"
         alt="Medium cooked steak on a fork." class="mobile-fork-image">
     </div>
-    <div class="menu-button-wrap">
-      <div class="menu-line top"></div>
-      <div class="menu-line middle"></div>
-      <div class="menu-line bottom"></div>
-    </div><a href="#" class="logo-link-tablet w-inline-block"><img src="mwslogo.png" loading="lazy" width="70"
-        alt="Logo of KK Quality Meats."></a>
+    <div class="mobile-menu-toggle" id="mobileMenuToggle">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </div>
+    <a href="index.htm" class="logo-link-tablet w-inline-block"><img src="images/kklogofin.png" loading="lazy"
+        width="70" alt="Logo of KK Quality Meats." class="image-22"></a>
     <div class="desktop-menu-only">
       <div class="menu-item-wrap-desktop"><a href="meats.html" class="menu-item meatdt w-inline-block">
           <div class="menu-title meat">meats</div><img
@@ -179,7 +193,7 @@
     <div id="p" class="bg-section wf-section">
       <div class="mycontain1440">
         <div class="w-layout-grid tapas-grid">
-          <div id="w-node-_065f36c9-8833-9605-f452-d686e7d4e025-71ae7d32" class="tapa-content">
+          <div id="w-node-_065f36c9-8833-9605-f452-d686e7d4025-71ae7d32" class="tapa-content">
             <div class="mask">
               <div
                 style="-webkit-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 100%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
@@ -370,6 +384,343 @@
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="6037a09f2ee93fde2f5d9ccf/js/webflow.c147b920a-1.js" type="text/javascript"></script>
   <!--[if lte IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif]-->
+
+  <!-- Clean Mobile Menu - 3 Line Hamburger -->
+  <style>
+    /* Hide Mobile Menu on desktop */
+    @media screen and (min-width: 992px) {
+      .mobile-menu-toggle,
+      .mobile-overlay {
+        display: none !important;
+      }
+    }
+
+    /* Mobile Menu Styles (<= 991px) */
+    @media screen and (max-width: 991px) {
+      /* Hamburger Button - Premium No Box Design */
+      .mobile-menu-toggle {
+        display: block !important;
+        position: fixed !important;
+        top: 25px !important;
+        right: 25px !important;
+        z-index: 999999 !important;
+        width: 32px !important;
+        height: 32px !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+        user-select: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+      }
+
+      .hamburger-line {
+        display: block !important;
+        width: 30px !important;
+        height: 3px !important;
+        background-color: #ffffff !important;
+        border-radius: 2px !important;
+        transform-origin: center !important;
+        position: absolute !important;
+        left: 50% !important;
+        margin-left: -15px !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 8px rgba(255, 255, 255, 0.1) !important;
+        will-change: transform, top, bottom, opacity !important;
+        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    opacity 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    margin-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+      }
+
+      .mobile-menu-toggle:hover .hamburger-line {
+        box-shadow: 0 3px 15px rgba(255, 255, 255, 0.5), 0 0 12px rgba(255, 255, 255, 0.2) !important;
+        background-color: #ffffff !important;
+      }
+
+      .mobile-menu-toggle.active .hamburger-line {
+        box-shadow: 0 3px 15px rgba(217, 74, 74, 0.7), 0 0 12px rgba(217, 74, 74, 0.3) !important;
+      }
+
+      .hamburger-line:nth-child(1) {
+        top: 6px !important;
+        transform: rotate(0deg) !important;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+                    top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+                    bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+                    margin-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+                    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s !important;
+      }
+
+      .hamburger-line:nth-child(2) {
+        top: 50% !important;
+        margin-top: -1.5px !important;
+        opacity: 1 !important;
+        transform: scaleX(1) !important;
+        transition: opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s,
+                    transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s,
+                    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s !important;
+      }
+
+      .hamburger-line:nth-child(3) {
+        bottom: 6px !important;
+        top: auto !important;
+        transform: rotate(0deg) !important;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+                    top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+                    bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+                    margin-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s,
+                    box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s !important;
+      }
+
+      .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+        transform: rotate(45deg) !important;
+        top: 50% !important;
+        margin-top: -1.5px !important;
+        bottom: auto !important;
+        background-color: #ffffff !important;
+        transition-delay: 0.1s !important;
+      }
+
+      .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+        opacity: 0 !important;
+        transform: scaleX(0) !important;
+        transition: opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s,
+                    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s !important;
+      }
+
+      .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) !important;
+        top: 50% !important;
+        margin-top: -1.5px !important;
+        bottom: auto !important;
+        background-color: #ffffff !important;
+        transition-delay: 0.1s !important;
+      }
+
+      /* Mobile Overlay */
+      .mobile-overlay {
+        display: none !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 999998 !important;
+        background-color: #000000 !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: opacity 0.4s ease, visibility 0.4s ease !important;
+      }
+
+      .mobile-overlay.open {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+
+      /* Menu List */
+      .mobile-menu-list {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+        gap: 20px !important;
+        transform: translateY(20px) !important;
+        opacity: 0 !important;
+        transition: transform 0.5s ease 0.1s, opacity 0.5s ease 0.1s !important;
+      }
+
+      .mobile-overlay.open .mobile-menu-list {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+      }
+
+      .mobile-menu-list li {
+        margin: 0 !important;
+        display: block !important;
+        opacity: 0 !important;
+        transform: translateY(15px) !important;
+        transition: opacity 0.4s ease, transform 0.4s ease !important;
+      }
+
+      .mobile-overlay.open .mobile-menu-list li {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+
+      .mobile-overlay.open .mobile-menu-list li:nth-child(1) {
+        transition-delay: 0.15s !important;
+      }
+
+      .mobile-overlay.open .mobile-menu-list li:nth-child(2) {
+        transition-delay: 0.2s !important;
+      }
+
+      .mobile-overlay.open .mobile-menu-list li:nth-child(3) {
+        transition-delay: 0.25s !important;
+      }
+
+      .mobile-overlay.open .mobile-menu-list li:nth-child(4) {
+        transition-delay: 0.3s !important;
+      }
+
+      .mobile-overlay.open .mobile-menu-list li:nth-child(5) {
+        transition-delay: 0.35s !important;
+      }
+
+      .nav-link.mobile {
+        color: white !important;
+        font-size: 24px !important;
+        font-weight: 700 !important;
+        text-decoration: none !important;
+        text-transform: uppercase !important;
+        font-family: Montserrat, sans-serif !important;
+        display: block !important;
+        padding: 10px 0 !important;
+        transition: color 0.3s ease !important;
+      }
+
+      .nav-link.mobile:hover {
+        color: #d94a4a !important;
+      }
+
+      /* Hide unnecessary elements */
+      .mobile-menu-item-wrap,
+      .mobile-fork-image {
+        display: none !important;
+      }
+
+      /* Get in Touch Button */
+      .button.is--mobile {
+        margin-top: 30px !important;
+        display: block !important;
+        opacity: 0 !important;
+        transform: translateY(15px) !important;
+        transition: opacity 0.4s ease 0.4s, transform 0.4s ease 0.4s !important;
+      }
+
+      .mobile-overlay.open .button.is--mobile {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+
+      /* Social Media Section */
+      .social-wrap {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-top: 40px !important;
+        padding: 20px 0 !important;
+        opacity: 0 !important;
+        transform: translateY(15px) !important;
+        transition: opacity 0.4s ease 0.5s, transform 0.4s ease 0.5s !important;
+      }
+
+      .mobile-overlay.open .social-wrap {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+      }
+
+      .follow-text {
+        color: white !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        margin-bottom: 20px !important;
+        font-family: Montserrat, sans-serif !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+      }
+
+      .social-icon-wrap {
+        display: flex !important;
+        gap: 20px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+      }
+
+      .social-link {
+        display: inline-block !important;
+        transition: transform 0.3s ease !important;
+      }
+
+      .social-link:hover {
+        transform: scale(1.1) !important;
+      }
+
+      .social-link img {
+        width: 40px !important;
+        height: 40px !important;
+        filter: brightness(0) invert(1) !important;
+      }
+    }
+  </style>
+  <script>
+    // Clean Mobile Menu Script - No Webflow interference
+    (function() {
+      'use strict';
+      
+      document.addEventListener('DOMContentLoaded', function() {
+        var menuToggle = document.getElementById('mobileMenuToggle');
+        var mobileOverlay = document.querySelector('.mobile-overlay');
+        var body = document.body;
+        var navLinks = document.querySelectorAll('.mobile-overlay .nav-link.mobile');
+        
+        if (!menuToggle || !mobileOverlay) return;
+        
+        // Toggle menu function
+        function toggleMenu() {
+          var isOpen = mobileOverlay.classList.contains('open');
+          
+          if (isOpen) {
+            // Close menu
+            menuToggle.classList.remove('active');
+            mobileOverlay.classList.remove('open');
+            body.style.overflow = '';
+          } else {
+            // Open menu
+            menuToggle.classList.add('active');
+            mobileOverlay.classList.add('open');
+            body.style.overflow = 'hidden';
+          }
+        }
+        
+        // Menu toggle click
+        menuToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleMenu();
+        });
+        
+        // Close menu when clicking overlay backdrop
+        mobileOverlay.addEventListener('click', function(e) {
+          if (e.target === mobileOverlay) {
+            toggleMenu();
+          }
+        });
+        
+        // Close menu when clicking navigation links
+        navLinks.forEach(function(link) {
+          link.addEventListener('click', function() {
+            toggleMenu();
+          });
+        });
+        
+        // Prevent Webflow from interfering
+        if (menuToggle.hasAttribute('data-w-id')) {
+          menuToggle.removeAttribute('data-w-id');
+        }
+      });
+    })();
+  </script>
   <style>
     .letter {
       display: inline-block;
